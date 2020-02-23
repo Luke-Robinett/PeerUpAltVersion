@@ -21,13 +21,16 @@ const post = {
         cb(null, result);
       });
   },
-  add: function (userId, skillId, body, cb) {
+  add: function (newPost, cb) {
+    if (!newPost.replyToId) {
+      newPost.replyToId = null;
+    }
     query = new Query();
     query
       .insert(
         "posts",
-        ["user_id", "skill_id", "body"],
-        [userId, skillId, body]
+        ["user_id", "skill_id", "body", "reply_to_id"],
+        [newPost.userId, newPost.skillId, newPost.body, newPost.replyToId]
       )
       .go(function(err, result) {
         if (err) {

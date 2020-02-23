@@ -147,7 +147,6 @@ $(document).ready(function () {
                     if (err) {
                         return console.log(err);
                     }
-                    console.log(answers);
                     answers.forEach(answer => {
                         const answerHeader = $(`<h5>${answer.username} responded:</h5>`);
                         const answerBody = $(`<p>${answer.body}</p>`);
@@ -158,14 +157,47 @@ $(document).ready(function () {
                         postDiv.append(answerDiv);
                     });
                 });
+                const addAnswerDiv = $("<div>");
+                const answerField = $(`<textarea class='answer-field' data-id=${postId} rows='2' cols='80'></textarea>`);
+                const answerButton = $(`<button class='answer-btn' data-id=${postId}>Post Answer</button>`);
+                addAnswerDiv.append(answerField, answerButton);
+
+                postDiv.append(addAnswerDiv);
 
                 $("#posts-container").append(postDiv);
+                console.log("postDiv");
+                console.log(postDiv);
             });
         });
     });
 
-    $("#add-post").on("show", function () {
-        alert("Div loaded");
+    $(".answer-btn").on("click", function (event) {
+        event.preventDefault();
+
+        const replyToId = $(this).data("id");
+        const body = $(`.answer-field[data-id=${replyToId}]`);
+
+        alert(replyToId + "\n" + body);
+
+        getUserInfo(function (err, user) {
+            if (err) {
+                throw err;
+            }
+            if (!user.id) {
+                return alert("Must be signed in to reply to posts.");
+            }
+            addAnswer({
+                userId: user.id,
+                skillId: null,
+                body: body,
+                replyToId: replyToId
+            }, function (err, response) {
+                if (err) {
+                    throw err;
+                }
+                console.log(response);
+            });
+        });
     });
 
     $("#add-post-form").on("submit", function (event) {
@@ -182,10 +214,6 @@ $(document).ready(function () {
             }
             alert("Post saved!");
         });
-    });
-
-    $("#choose-skill-dropdown").on("change", function (event) {
-        // alert($(this).children("option:selected").val());
     });
 
     $("#get-username-btn").on("click", function (event) {

@@ -63,6 +63,22 @@ module.exports = function (app) {
     });
   });
 
+  app.post("/api/answers/:id", function ({ body }, res) {
+    db.post.add({
+      userId: req.body.userId,
+      skillId: null,
+      body: req.body.body,
+      replyToId: req.body.replyToId
+    },
+      function (err) {
+        if (err) {
+          console.log(err);
+          return res.status(401).send(err);
+        }
+        res.status(200).send(req.body);
+      });
+  });
+
   app.get("/api/posts", function (req, res) {
     db.post.findAll(function (err, result) {
       if (err) {
@@ -73,10 +89,11 @@ module.exports = function (app) {
   });
 
   app.post("/api/posts", function (req, res) {
-    db.post.add(
-      req.body.userId,
-      req.body.skillId,
-      req.body.body,
+    db.post.add({
+      userId: req.body.userId,
+      skillId: req.body.skillId,
+      body: req.body.body
+    },
       function (err) {
         if (err) {
           console.log(err);

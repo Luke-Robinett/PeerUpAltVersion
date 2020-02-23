@@ -46,6 +46,25 @@ function signUp(userInfo, callback) {
         });
 }
 
+// Add a new post
+function addPost(post, callback) {
+    $.ajax(baseUrl + "/api/posts", {
+        method: "POST",
+        data: post
+    })
+        .then(function (response) {
+            callback(null, response);
+        })
+        .catch(function (err) {
+            callback(err);
+        });
+}
+
+// Add a new answer
+function addAnswer(answer, callback) {
+    addPost(answer, callback);
+}
+
 
 // GET Calls
 
@@ -70,6 +89,7 @@ function getUserInfo(callback) {
         });
 }
 
+// Log out the current user
 function logOut(callback) {
     $.get(baseUrl + "/api/logout", function (response) {
         callback(null, response);
@@ -79,6 +99,7 @@ function logOut(callback) {
         });
 }
 
+// Get list of available skills
 function getSkills(callback) {
     $.get(baseUrl + "/api/skills")
         .then(function (response) {
@@ -89,6 +110,7 @@ function getSkills(callback) {
         });
 }
 
+// Get all posts
 function getPosts(callback) {
     $.get(baseUrl + "/api/posts")
         .then(function (response) {
@@ -99,21 +121,9 @@ function getPosts(callback) {
         });
 }
 
+// Get the answers (replies) to a specified post 
 function getAnswers(postId, callback) {
     $.get(baseUrl + "/api/answers/" + postId, { async: false })
-        .then(function (response) {
-            callback(null, response);
-        })
-        .catch(function (err) {
-            callback(err);
-        });
-}
-
-function addPost(post, callback) {
-    $.ajax(baseUrl + "/api/posts", {
-        method: "POST",
-        data: post
-    })
         .then(function (response) {
             callback(null, response);
         })
