@@ -1,0 +1,43 @@
+html {
+  background: linear-gradient(rgba(0, 85, 133, 0.45), rgba(208, 83, 232, 0.45))
+      no-repeat center center fixed,
+    url("../css/img/webb.png");
+}
+
+.logout {
+  text-align: right;
+  padding: 20px 20px 0 0;
+}
+
+.logout-icon {
+  color: gray;
+  font-size: 18px;
+}
+
+.logout-icon:hover {
+  -webkit-transform: scale(1.2) rotate(0.01deg);
+  transform: scale(1.2) rotate(0.01deg);
+}
+
+.content {
+  margin-bottom: 20%;
+  text-align: center;
+}
+
+.peer-up:hover {
+  margin: 0 0 0 0;
+  text-decoration: none;
+}
+
+.uk-grid-match {
+  margin-bottom: 20%;
+}
+
+.post-area {
+  margin-bottom: 20%;
+}
+
+.uk-card {
+  display: inline-block;
+  width: 30%;
+}

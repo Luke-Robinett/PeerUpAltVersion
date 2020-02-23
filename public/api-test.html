@@ -1,0 +1,120 @@
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>API Test</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script src="assets/js/api.js"></script>
+</head>
+
+<body>
+ <h1>API Tester</h1>
+ <hr>
+ <label for="api-dropdown">Select API</label><br>
+ <select id="api-dropdown"></select>
+ <hr>
+
+ <div id="login" class="form-div">
+  <h2>Login</h2>
+  <form id="login-form">
+   <label for="login-email-field">Email</label><br>
+   <input type="email" id="login-email-field">>br>
+   <br>
+   <label for="login-password-field">Password</label><br>
+   <input type="password" id="login-password-field">>br>
+   <br>
+   <input type="submit" value="Log In">
+  </form>
+ </div>
+
+ <div id="signup" class="form-div">
+  <h2>Sign Up</h2>
+  <form id="signup-form">
+   <label for="signup-username-field">Username</label><br>
+   <input id="signup-username-field" readonly><br>
+   <p>Each time the button is clicked, a different random username will be generated</p>
+   <button id="signup-username-btn">Get Username</button><br>
+   <br>
+   <label for="signup-email-field">Email</label><br>
+   <input type="email" id="signup-email-field"><br>
+   <br>
+   <label for="signup-password-field">Password</label><br>
+   <input type="password" id="signup-password-field"><br>
+   <br>
+   <input type="submit" value="Sign Up">
+  </form>
+ </div>
+
+<div id="namegen" class="form-div">
+    <h2>Username Generator</h2>
+    <form id="namegen-form">
+        <label for="namegen-username-field">Username</label><br>
+        <input id="namegen-username-field" readonly><br>
+        <p>Each time you press the Go button you'll get a different random username.</p>
+        <input id="namegen-go-btn" type="submit" value="Go">
+    </form>
+</div>
+
+<div id="user-info" class="form-div">
+    <h2>User Info</h2>
+    <h3>Note: Requires that you've run the login API and successfully signed in as a user.</h3>
+    <form id="user-info-form">
+        <input type="submit" value="Get User Info"><br>
+        <br>
+        <textarea id="user-info-textarea" rows="5" cols="120" readonly></textarea>
+    </form>
+</div>
+
+<div id="logout" class="form-div">
+    <h2>Log Out</h2>
+    <p>(Has no effect if not already logged in.</p>
+    <form id="logout-form">
+        Click To Log Out<br>
+        <input type="submit" value="Log Out">;
+    </form>
+</div>
+
+<div id="skills" class="form-div">
+    <h2>Skills</h2>
+    <form id="skills-form">
+        <input type="submit" value="Get Skills"><br>
+        <br>
+        <ul id="skills-list"></ul>
+    </form>
+</div>
+
+<div id="posts" class="form-div">
+    <h2>Posts</h2>
+    <p>This also demonstrates the getAnswers() function by displaying any answers each post might have, if any.</p>
+    <form id="posts-form">
+        <input type="submit" value="Show Posts"><br>
+        <br>
+        <div id="posts-container"></div>
+    </form>
+</div>
+
+<div id="add-post" class="form-div">
+    <h2>Add a Post</h2>
+    <form id="add-post-form">
+        Username:
+        <span id="username-span"></span><br>
+        <button id="get-username-btn">Get Current User</button>
+        <br>
+        <label for="choose-skill-dropdown">Select Skill You Need Help With</label><br>
+        <select id="choose-skill-dropdown"></select><br>
+        <br>
+        <label for="post-body-textarea">Describe Your Question</label>
+        <textarea id="post-body-textarea" rows="10" cols="120"></textarea><br>
+        <br>
+        <input type="submit" value="Submit Post">
+    </form>
+</div>
+
+
+
+ <script src="assets/js//api-test.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<div class="post uk-card uk-card-default uk-card-body uk-margin" style="width: 75%">
+    {{username}} posted the following request:
+    <h5 style="padding-top: 10px">{{body}}</h5>
+
+    <button class="uk-button uk-button-default" data-id="{{id}}" disabled>chat</button>
+    
+    <a class="answer uk-button uk-button-default" href="#modal-sections" uk-toggle data-id="{{id}}">post answer</a>
+
+    <div id="modal-sections" uk-modal>
+        <div class="uk-modal-dialog">
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">help a peer out</h2>
+            </div>
+            <div class="uk-modal-body">
+                <form>
+                    <div class="uk-margin">
+                        <textarea class="response-body uk-textarea" rows="5" placeholder="write your response here"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="uk-modal-footer uk-text-right">
+                <a class="save uk-button uk-button-default" href="/feed" style="background-color: #F7F7F7">save</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<br>
